@@ -2,7 +2,7 @@ version: '3'
 services:
   nginx:
    container_name: v-nginx
-   image: nginx:1.13
+   image: nginx:1.25.4
    restart: always
    ports:
    - 80:80
@@ -12,7 +12,7 @@ services:
     
   mysql:
    container_name: v-mysql
-   image: mysql/mysql-server:5.7
+   image: mysql:8.2.0
    environment:
     MYSQL_DATABASE: test
     MYSQL_ROOT_PASSWORD: root
@@ -28,6 +28,8 @@ services:
     volumes:
       - ./app:/app
       - ~/.m2:/root/.m2
+    ports:
+      - "8080:8080"
     expose:
       - "8080"
     depends_on:
